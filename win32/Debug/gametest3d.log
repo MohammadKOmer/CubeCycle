@@ -1,0 +1,18 @@
+﻿Build started 9/9/2015 9:25:19 PM.
+     1>Project "C:\Users\mkash\Desktop\3d gamedev\gametest3d\win32\gametest3d.vcxproj" on node 2 (build target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(299,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+     1>InitializeBuildStatus:
+         Creating "Debug\gametest3d.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         gametest3d.vcxproj -> C:\Users\mkash\Desktop\3d gamedev\gametest3d\win32\..\gametest3d.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\gametest3d.unsuccessfulbuild".
+         Touching "Debug\gametest3d.lastbuildstate".
+     1>Done Building Project "C:\Users\mkash\Desktop\3d gamedev\gametest3d\win32\gametest3d.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.05
