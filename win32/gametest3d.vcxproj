@@ -11,21 +11,33 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\body.c" />
+    <ClCompile Include="..\src\collisions.c" />
+    <ClCompile Include="..\src\enemy.c" />
+    <ClCompile Include="..\src\entity.c" />
     <ClCompile Include="..\src\gametest3d.c" />
     <ClCompile Include="..\src\graphics3d.c" />
+    <ClCompile Include="..\src\mgl_callback.c" />
     <ClCompile Include="..\src\model.c" />
     <ClCompile Include="..\src\obj.c" />
     <ClCompile Include="..\src\shader.c" />
     <ClCompile Include="..\src\simple_logger.c" />
+    <ClCompile Include="..\src\space.c" />
     <ClCompile Include="..\src\sprite.c" />
     <ClCompile Include="..\src\vector.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\body.h" />
+    <ClInclude Include="..\include\collisions.h" />
+    <ClInclude Include="..\include\enemy.h" />
+    <ClInclude Include="..\include\entity.h" />
     <ClInclude Include="..\include\graphics3d.h" />
+    <ClInclude Include="..\include\mgl_callback.h" />
     <ClInclude Include="..\include\model.h" />
     <ClInclude Include="..\include\obj.h" />
     <ClInclude Include="..\include\shader.h" />
     <ClInclude Include="..\include\simple_logger.h" />
+    <ClInclude Include="..\include\space.h" />
     <ClInclude Include="..\include\sprite.h" />
     <ClInclude Include="..\include\vector.h" />
   </ItemGroup>
@@ -60,8 +72,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\mkash\Desktop\Lib\SDL2_image-devel-2.0.0-VC\SDL2_image-2.0.0\include;C:\Users\mkash\Desktop\Lib\glew-1.13.0-win32\glew-1.13.0\include;C:\Users\mkash\Desktop\Lib\SDL2-devel-2.0.3-VC\SDL2-2.0.3\include;C:\Users\mkash\Desktop\3d gamedev\gametest3d\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\mkash\Desktop\Lib\SDL2_image-devel-2.0.0-VC\SDL2_image-2.0.0\lib\x86;C:\Users\mkash\Desktop\Lib\glew-1.13.0-win32\glew-1.13.0\lib\Release\Win32;C:\Users\mkash\Desktop\Lib\SDL2-devel-2.0.3-VC\SDL2-2.0.3\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\mkash\Desktop\Lib\glib-2.28\include\gio-win32-2.0;C:\Users\mkash\Desktop\Lib\glib-2.28\include\glib-2.0\glib;C:\Users\mkash\Desktop\Lib\glib-2.28\lib\glib-2.0\include;C:\Users\mkash\Desktop\Lib\glib-2.28\include\glib-2.0;C:\Users\mkash\Desktop\Lib\SDL2_image-devel-2.0.0-VC\SDL2_image-2.0.0\include;C:\Users\mkash\Desktop\Lib\glew-1.13.0-win32\glew-1.13.0\include;C:\Users\mkash\Desktop\Lib\SDL2-devel-2.0.3-VC\SDL2-2.0.3\include;C:\Users\mkash\Desktop\3d gamedev\CubeCycle\include;C:\Users\mkash\Desktop\3d gamedev\gametest3d\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\mkash\Desktop\Lib\glib-2.28\lib;C:\Users\mkash\Desktop\Lib\SDL2_image-devel-2.0.0-VC\SDL2_image-2.0.0\lib\x86;C:\Users\mkash\Desktop\Lib\glew-1.13.0-win32\glew-1.13.0\lib\Release\Win32;C:\Users\mkash\Desktop\Lib\SDL2-devel-2.0.3-VC\SDL2-2.0.3\lib\x86;$(LibraryPath)</LibraryPath>
     <OutDir>..</OutDir>
     <IntDir>$(Configuration)\</IntDir>
   </PropertyGroup>
@@ -69,11 +81,12 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
+      <CompileAs>Default</CompileAs>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;SDL2_image.lib;glew32s.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;SDL2_image.lib;glew32s.lib;glu32.lib;gio-2.0.lib;gobject-2.0.lib;gthread-2.0.lib;gmodule-2.0.lib;glib-2.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

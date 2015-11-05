@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include "sprite.h"
 #include "simple_logger.h"
 #include "graphics3d.h"

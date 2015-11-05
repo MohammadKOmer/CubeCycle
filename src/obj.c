@@ -1,5 +1,5 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "obj.h"
 #include "simple_logger.h"
 
@@ -38,8 +38,6 @@ Obj *obj_get_by_filename(char *filename)
         if ((ObjList[i].used != 0) &&
             (strcmp(ObjList[i].filename,filename) == 0))
         {
-            memset(&ObjList[i],0,sizeof(Obj));
-            ObjList[i].used = 1;
             return &ObjList[i];
         }
     }
@@ -411,7 +409,6 @@ void obj_draw(
     Sprite *texture
              )
 {
-#define LOGOBJ 0
     int i;
     ObjTriangle* triangle;
     float trans[4];
@@ -445,7 +442,6 @@ void obj_draw(
     glScalef(scale.x,scale.y,scale.z);
     
     glColor3f(color.x,color.y,color.z);
-    
     glBegin(GL_TRIANGLES);
     for (i = 0; i < obj->num_tris; i++)
     {
