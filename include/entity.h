@@ -25,6 +25,7 @@ typedef struct Entity_S
     Sprite *texture;    /**<object texture*/
     Body body;
     void (*think)(struct Entity_S *self);
+	int health;
 }Entity;
 
 /**

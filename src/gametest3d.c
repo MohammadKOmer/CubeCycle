@@ -32,8 +32,9 @@
 void set_camera(Vec3D position, Vec3D rotation);
 
 extern int inputDir;
-
-
+extern int leftMouseInput;
+extern int rightMouseInput;
+extern Space *space;
 
 
 
@@ -41,7 +42,7 @@ int main(int argc, char *argv[])
 {
     int i;
     float r = 0;
-    Space *space;
+    
     Entity *cube1,*cube2;
     char bGameLoopRunning = 1;
     Vec3D cameraPosition = {0,-10,2};
@@ -58,21 +59,21 @@ int main(int argc, char *argv[])
     model_init();
     obj_init();
     entity_init(255);
-    
-    chicken = obj_load("models/monkey.obj");
+    space = space_new();
+    space_set_steps(space,100);  
+
+
+//    chicken = obj_load("models/monkey.obj");
     bgobj = obj_load("models/mountainvillage.obj");
     bgtext = LoadSprite("models/mountain_text.png",1024,1024);
     
-    cube1 = newPlayer(vec3d(0,0,0),"Cubert");
-    cube2 = newCube(vec3d(10,0,0),"Hobbes");
+    cube1 = newPlayer(vec3d(0,0,0),"Player");
+    cube2 = newCube(vec3d(3,0,0),"Box");
     
-  //  cube2->body.velocity.x = -0.1;
 	cube2->color.x=.5;
-    space = space_new();
-    space_set_steps(space,100);
-    
-    space_add_body(space,&cube1->body);
-    space_add_body(space,&cube2->body);
+  
+
+
     while (bGameLoopRunning)
     {
         entity_think_all();
@@ -110,6 +111,20 @@ int main(int argc, char *argv[])
                 {
                     inputDir=0;
                 }
+			}else if(e.type==SDL_MOUSEBUTTONDOWN){
+				if(e.button.button==SDL_BUTTON_LEFT){
+					leftMouseInput=1;
+				}
+				if(e.button.button==SDL_BUTTON_RIGHT){
+					rightMouseInput=1;
+				}
+			}else if(e.type==SDL_MOUSEBUTTONUP){
+				if(e.button.button==SDL_BUTTON_LEFT){
+					leftMouseInput=0;
+				}
+				if(e.button.button==SDL_BUTTON_RIGHT){
+					rightMouseInput=0;
+				}
 			}
 			//slog("%i\n",inputDir);
         }
@@ -124,38 +139,38 @@ int main(int argc, char *argv[])
         entity_draw_all();
         glPushMatrix();
         glTranslatef(-5,0,0);
-        obj_draw(
+        /*obj_draw(
             chicken,
             vec3d(0,0,0),
             vec3d(0,0,0),
             vec3d(1,1,1),
             vec4d(1,0,0,1),
             NULL
-        );
+        );*/
         glPushMatrix();
         
         glTranslatef(0,1,0);
         glScalef(0.5,0.5,0.5);
         
         glRotatef(45,0.0,0.0,1.00);
-        obj_draw(
+       /* obj_draw(
             chicken,
             vec3d(0,0,0),
             vec3d(0,0,0),
             vec3d(1,1,1),
             vec4d(0,1,0,1),
             NULL
-        );        
+        );    */    
         glPushMatrix();
         glRotatef(45,0.0,1.0,0.0);
-        obj_draw(
+      /*  obj_draw(
             chicken,
             vec3d(0,0,0),
             vec3d(0,0,0),
             vec3d(0.5,0.5,0.5),
             vec4d(0,0,1,1),
             NULL
-        );        
+        );    */    
         
         glPopMatrix();
         glPopMatrix();

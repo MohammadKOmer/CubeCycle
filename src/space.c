@@ -5,6 +5,8 @@
 
 #include <glib.h>
 #include <glib/glist.h>
+extern Space *space;
+Space *space;
 struct Space_S
 {
     GList *bodylist; /**<hash map of all bodies in space*/
@@ -15,7 +17,7 @@ struct Space_S
 
 Space *space_new()
 {
-    Space *space;
+    
     space = (Space *)calloc(1,sizeof(struct Space_S));
     return space;
 }
@@ -73,8 +75,10 @@ static void space_body_update(Space *space,Body *body)
     {
         if (!it->data)continue;
         if (it->data == body)continue;
+
         /*check for collision*/
         other = (Body *)it->data;
+
         vec3d_cpy(b,other->position);
         b.w = other->bounds.w;
         b.h = other->bounds.h;
