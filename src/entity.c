@@ -44,7 +44,7 @@ void entity_free(Entity *ent)
         slog("passed a null entity");
         return;
     }
-    ent[0].inuse = 0;
+    ent->inuse = 0;
     obj_free(ent->objModel);
     FreeSprite(ent->texture);
 }
@@ -115,14 +115,5 @@ int entity_is_entity(void *data)
     if ((Entity *)data >= (__entity_list + __entity_max))return 0;
     return 1;
 }
-
-
-
-
-
-
-
-
-
 
 /*eol@eof*/

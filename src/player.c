@@ -3,7 +3,6 @@
 #include "player.h"
 #include "space.h"
 
-
 extern Space *space;
 extern int inputDir;
 extern int attackDir;
@@ -11,8 +10,9 @@ extern int leftMouseInput;
 extern int rightMouseInput;
 int inputDir;
 int attackDir;
- int leftMouseInput;
- int rightMouseInput;
+int leftMouseInput;
+int rightMouseInput;
+
 Entity *newPlayer(Vec3D position,const char *name)
 {
     Entity * ent;
@@ -40,6 +40,7 @@ Entity *newPlayer(Vec3D position,const char *name)
 	space_add_body(space,&ent->body);
     return ent;
 }
+
 void playerThink(Entity *self)
 {
 	float speed;

@@ -47,8 +47,9 @@ void touch_callback(void *data, void *context)
         other = (Entity *)obody->touch.data;
 		if(other->type==PLAYER){
 			other->health-=10;
+			
+			space_remove_body(space,&me->body);
 			entity_free(me);
-			space_remove_body(space,me->body);
 			slog("%s health is %i ",other->name,other->health);
 		}
        // slog("%s is ",other->name);
