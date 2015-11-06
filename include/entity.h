@@ -6,12 +6,14 @@
 #include "sprite.h"
 #include "collisions.h"
 #include "body.h"
+typedef enum {PLAYER, RAMP ,BOX, LAVA,FLYING,BOMBERS,SWORDSMEN} entType;
 
 typedef struct Entity_S
 {
     int inuse;
     int uid;    /**<unique id of this entity*/
     char name[128];
+	entType type;
     Vec3D acceleration;
     Vec3D rotation;
     Vec3D scale;

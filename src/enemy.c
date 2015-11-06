@@ -17,8 +17,8 @@ Entity *newCube(Vec3D position,const char *name)
     }
     ent->objModel = obj_load("models/cube.obj");
     ent->texture = LoadSprite("models/cube_text.png",1024,1024);
-   
-
+	
+	ent->type=BOX;
 
 	vec3d_cpy(ent->body.position,position);
     cube_set(ent->body.bounds,-1,-1,-1,2,2,2);
@@ -39,7 +39,7 @@ void touch_callback(void *data, void *context)
     if (entity_is_entity(obody->touch.data))
     {
         other = (Entity *)obody->touch.data;
-        slog("%s is ",other->name);
+       // slog("%s is ",other->name);
     }
-    slog("touching me.... touching youuuuuuuu");
+    //slog("touching me.... touching youuuuuuuu");
 }

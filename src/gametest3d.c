@@ -28,10 +28,10 @@
 #include "entity.h"
 #include "space.h"
 #include "enemy.h"
+#include "player.h"
 void set_camera(Vec3D position, Vec3D rotation);
 
-
-
+extern int inputDir;
 
 
 
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     Space *space;
     Entity *cube1,*cube2;
     char bGameLoopRunning = 1;
-    Vec3D cameraPosition = {0,-10,0.3};
+    Vec3D cameraPosition = {0,-10,2};
     Vec3D cameraRotation = {90,0,0};
     SDL_Event e;
     Obj *bgobj,*chicken;
@@ -63,10 +63,10 @@ int main(int argc, char *argv[])
     bgobj = obj_load("models/mountainvillage.obj");
     bgtext = LoadSprite("models/mountain_text.png",1024,1024);
     
-    cube1 = newCube(vec3d(0,0,0),"Cubert");
+    cube1 = newPlayer(vec3d(0,0,0),"Cubert");
     cube2 = newCube(vec3d(10,0,0),"Hobbes");
     
-    cube2->body.velocity.x = -0.1;
+  //  cube2->body.velocity.x = -0.1;
 	cube2->color.x=.5;
     space = space_new();
     space_set_steps(space,100);
@@ -92,80 +92,26 @@ int main(int argc, char *argv[])
                 {
                     bGameLoopRunning = 0;
                 }
-                else if (e.key.keysym.sym == SDLK_SPACE)
-                {
-                    cameraPosition.z++;
-                }
-                else if (e.key.keysym.sym == SDLK_z)
-                {
-                    cameraPosition.z--;
-                }
-                else if (e.key.keysym.sym == SDLK_w)
-                {
-                    vec3d_add(
-                        cameraPosition,
-                        cameraPosition,
-                        vec3d(
-                            -sin(cameraRotation.z * DEGTORAD),
-                            cos(cameraRotation.z * DEGTORAD),
-                            0
-                        ));
-                }
-                else if (e.key.keysym.sym == SDLK_s)
-                {
-                    vec3d_add(
-                        cameraPosition,
-                        cameraPosition,
-                        vec3d(
-                            sin(cameraRotation.z * DEGTORAD),
-                            -cos(cameraRotation.z * DEGTORAD),
-                            0
-                        ));
-                }
                 else if (e.key.keysym.sym == SDLK_d)
                 {
-                    vec3d_add(
-                        cameraPosition,
-                        cameraPosition,
-                        vec3d(
-                            cos(cameraRotation.z * DEGTORAD),
-                            sin(cameraRotation.z * DEGTORAD),
-                            0
-                        ));
+                   inputDir=1;
                 }
                 else if (e.key.keysym.sym == SDLK_a)
                 {
-                    vec3d_add(
-                        cameraPosition,
-                        cameraPosition,
-                        vec3d(
-                            -cos(cameraRotation.z * DEGTORAD),
-                            -sin(cameraRotation.z * DEGTORAD),
-                            0
-                        ));
+                    inputDir=-1;
                 }
-                else if (e.key.keysym.sym == SDLK_LEFT)
+			}else if(e.type==SDL_KEYUP){
+
+				if ((e.key.keysym.sym== SDLK_d) == (SDLK_d&&inputDir==1))
                 {
-                    cameraRotation.z += 1;
+                   inputDir=0;
                 }
-                else if (e.key.keysym.sym == SDLK_RIGHT)
+                else if ((e.key.keysym.sym == SDLK_a)&&(inputDir==-1))
                 {
-                    cameraRotation.z -= 1;
+                    inputDir=0;
                 }
-                else if (e.key.keysym.sym == SDLK_UP)
-                {
-                    cameraRotation.x += 1;
-                }
-                else if (e.key.keysym.sym == SDLK_DOWN)
-                {
-                    cameraRotation.x -= 1;
-                }
-                else if (e.key.keysym.sym == SDLK_n)
-                {
-                    cube1->state ++;
-                    if (cube1->state >= 3)cube1->state = 0;
-                }
-            }
+			}
+			//slog("%i\n",inputDir);
         }
 
         graphics3d_frame_begin();

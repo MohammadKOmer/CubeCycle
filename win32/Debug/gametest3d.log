@@ -1,19 +1,17 @@
-﻿Build started 11/5/2015 1:32:00 PM.
+﻿Build started 11/5/2015 11:01:56 PM.
      1>Project "C:\Users\mkash\Desktop\3d gamedev\CubeCycle\win32\gametest3d.vcxproj" on node 2 (build target(s)).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(299,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
      1>InitializeBuildStatus:
          Creating "Debug\gametest3d.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt ..\src\enemy.c ..\src\space.c
-         space.c
-     1>c:\users\mkash\desktop\3d gamedev\cubecycle\src\space.c(32): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-         enemy.c
-     1>c:\users\mkash\desktop\3d gamedev\cubecycle\src\enemy.c(16): warning C4033: 'newCube' must return a value
-     1>c:\users\mkash\desktop\3d gamedev\cubecycle\src\enemy.c(25): warning C4013: 'sprintf' undefined; assuming extern returning int
-     1>c:\users\mkash\desktop\3d gamedev\cubecycle\src\enemy.c(8): warning C4101: 'i' : unreferenced local variable
-     1>c:\users\mkash\desktop\3d gamedev\cubecycle\src\enemy.c(7): warning C4101: 'buffer' : unreferenced local variable
-         Generating Code...
-     1>c:\users\mkash\desktop\3d gamedev\cubecycle\src\enemy.c(30): warning C4715: 'newCube' : not all control paths return a value
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt ..\src\player.c
+         player.c
+     1>c:\users\mkash\desktop\3d gamedev\cubecycle\src\player.c(18): warning C4033: 'newPlayer' must return a value
+     1>c:\users\mkash\desktop\3d gamedev\cubecycle\src\player.c(28): warning C4013: 'sprintf' undefined; assuming extern returning int
+     1>c:\users\mkash\desktop\3d gamedev\cubecycle\src\player.c(10): warning C4101: 'i' : unreferenced local variable
+     1>c:\users\mkash\desktop\3d gamedev\cubecycle\src\player.c(9): warning C4101: 'buffer' : unreferenced local variable
+     1>c:\users\mkash\desktop\3d gamedev\cubecycle\src\player.c(37): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\mkash\desktop\3d gamedev\cubecycle\src\player.c(33): warning C4715: 'newPlayer' : not all control paths return a value
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\gametest3d.exe" /NOLOGO SDL2.lib SDL2main.lib opengl32.lib glew32.lib SDL2_image.lib glew32s.lib glu32.lib "gio-2.0.lib" "gobject-2.0.lib" "gthread-2.0.lib" "gmodule-2.0.lib" "glib-2.0.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\gametest3d.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\mkash\Desktop\3d gamedev\CubeCycle\gametest3d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\gametest3d.lib" /MACHINE:X86 Debug\body.obj
          Debug\collisions.obj
@@ -24,6 +22,7 @@
          Debug\mgl_callback.obj
          Debug\model.obj
          Debug\obj.obj
+         Debug\player.obj
          Debug\shader.obj
          Debug\simple_logger.obj
          Debug\space.obj
@@ -41,4 +40,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.40
+Time Elapsed 00:00:00.76
