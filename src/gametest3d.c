@@ -61,16 +61,17 @@ int main(int argc, char *argv[])
     entity_init(255);
     space = space_new();
     space_set_steps(space,100);  
-
+	SDL_SetRelativeMouseMode(SDL_TRUE);
 
 //    chicken = obj_load("models/monkey.obj");
     bgobj = obj_load("models/mountainvillage.obj");
     bgtext = LoadSprite("models/mountain_text.png",1024,1024);
     
-    cube1 = newPlayer(vec3d(0,0,0),"Player");
-    cube2 = newCube(vec3d(3,0,0),"Box");
-    
-	cube2->color.x=.5;
+    newPlayer(vec3d(0,0,0),"Player");
+    newCube(vec3d(3,10,0),"Box");
+	newCrosshair(vec3d(0,0,3),"Cross");
+    newSwordsmen(vec3d(3,0,0),"swords");
+
   
 
 
@@ -178,7 +179,7 @@ int main(int argc, char *argv[])
         glPopMatrix();
         obj_draw(
             bgobj,
-            vec3d(0,0,2),
+            vec3d(0,7,2),
             vec3d(90,90,0),
             vec3d(5,5,5),
             vec4d(1,1,1,1),

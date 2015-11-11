@@ -6,7 +6,8 @@
 #include "sprite.h"
 #include "collisions.h"
 #include "body.h"
-typedef enum {PLAYER, RAMP ,BOX, LAVA,FLYING,BOMBERS,SWORDSMEN} entType;
+typedef enum {PLAYER, RAMP ,BOX, LAVA,FLYING,BOMBERS,SWORDSMEN,BULLET,
+CROSSHAIR} entType;
 
 typedef struct Entity_S
 {
