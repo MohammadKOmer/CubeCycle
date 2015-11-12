@@ -29,28 +29,61 @@
 #include "space.h"
 #include "enemy.h"
 #include "player.h"
+#include <stdlib.h>
+#include <math.h>
 void set_camera(Vec3D position, Vec3D rotation);
 
 extern int inputDir;
 extern int leftMouseInput;
 extern int rightMouseInput;
+extern int now;
+extern int then;
 extern Space *space;
+int obsSpawnTimer;
+int flySpawnTimer;
+int enemySpawnTimer;
+int difficultyMod;
 
-
-
+void spawnForThisTick(){
+	
+	obsSpawnTimer-= 33;
+	flySpawnTimer-= 33;
+	enemySpawnTimer-= 33;
+	if(obsSpawnTimer<0){
+		newCube(vec3d((float)rand()/((float)RAND_MAX/6)-3
+			,10,0),"Box");
+		obsSpawnTimer=(rand()%40)*difficultyMod;
+		difficultyMod--;
+	}
+	if(enemySpawnTimer<0){
+		Entity* sword=newSwordsmen(vec3d(((rand()%2)*2-1)*4
+			,0,0),"swords");
+		slog("%f sword x",sword->body.position.x);
+		enemySpawnTimer=(rand()%40)*difficultyMod;
+	}
+	if(flySpawnTimer<0){
+		newFlying( vec3d((float)rand()/((float)RAND_MAX/6)-3,
+		(float)rand()/((float)RAND_MAX/5)+2,
+		(float)rand()/((float)RAND_MAX/3.5)+1.5),"swords");
+		flySpawnTimer=(rand()%40)*difficultyMod;
+	}
+	
+}
 int main(int argc, char *argv[])
 {
     int i;
     float r = 0;
-    
-    Entity *cube1,*cube2;
+  
     char bGameLoopRunning = 1;
     Vec3D cameraPosition = {0,-10,2};
     Vec3D cameraRotation = {90,0,0};
     SDL_Event e;
     Obj *bgobj,*chicken;
     Sprite *bgtext;
-    
+      obsSpawnTimer=100;
+	flySpawnTimer=300;
+	enemySpawnTimer=500;
+	difficultyMod=100;
     init_logger("gametest3d.log");
     if (graphics3d_init(1024,768,1,"gametest3d",33) != 0)
     {
@@ -64,8 +97,8 @@ int main(int argc, char *argv[])
 	SDL_SetRelativeMouseMode(SDL_TRUE);
 
 //    chicken = obj_load("models/monkey.obj");
-    bgobj = obj_load("models/mountainvillage.obj");
-    bgtext = LoadSprite("models/mountain_text.png",1024,1024);
+    //bgobj = obj_load("models/mountainvillage.obj");
+  //  bgtext = LoadSprite("models/mountain_text.png",1024,1024);
     
     newPlayer(vec3d(0,0,0),"Player");
     newCube(vec3d(3,10,0),"Box");
@@ -77,6 +110,7 @@ int main(int argc, char *argv[])
 
     while (bGameLoopRunning)
     {
+		spawnForThisTick();
         entity_think_all();
         for (i = 0; i < 100;i++)
         {
@@ -177,7 +211,7 @@ int main(int argc, char *argv[])
         glPopMatrix();
         
         glPopMatrix();
-        obj_draw(
+    /*    obj_draw(
             bgobj,
             vec3d(0,7,2),
             vec3d(90,90,0),
@@ -185,7 +219,7 @@ int main(int argc, char *argv[])
             vec4d(1,1,1,1),
             bgtext
         );
-        
+        */
         if (r > 360)r -= 360;
         glPopMatrix();
         /* drawing code above here! */

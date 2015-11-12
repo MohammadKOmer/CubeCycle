@@ -2,20 +2,21 @@
 #include "simple_logger.h"
 #include "player.h"
 #include "space.h"
-
+#include "graphics3d.h"
 extern Space *space;
 extern int inputDir;
 extern int attackDir;
 extern int leftMouseInput;
 extern int rightMouseInput;
 extern Entity* Player;
+extern int then;
+extern int now;
 int inputDir;
  int leftMouseInput;
  int rightMouseInput;
 int attackDir;
 int timeTillNextBullet;
-int last;
-int now;
+
 Entity* Player;
 Entity *newPlayer(Vec3D position,const char *name)
 {
@@ -94,8 +95,8 @@ void crossHairThink(Entity *self){
 	float speed = .005;
 	SDL_GetRelativeMouseState(&x,&z);
 //	slog("%f , %f",self->body.position.x,self->body.position.z);
-	now=SDL_GetTicks ();
-	timeTillNextBullet -= now - last;
+
+	timeTillNextBullet -= 33;
 	self->body.velocity.x=speed *x;
 	self->body.velocity.z=-speed *z;
 	if(((self->body.position.x>3)&&(self->body.velocity.x>0))||
@@ -110,7 +111,7 @@ void crossHairThink(Entity *self){
 		newBullet(vec3d(self->body.position.x,self->body.position.y+.5,self->body.position.z),"Bullet");
 		timeTillNextBullet=150;
 	}
-	last =now;
+	
 }
 
 Entity *newBullet(Vec3D position,const char *name){

@@ -89,7 +89,7 @@ static void space_body_update(Space *space,Body *body)
             /*call touch functions*/
             /*back the fuck off*/
             //vec3d_cpy(body->_stepOffVector,stepOffVector);
-            body->_done = 1;
+            //body->_done = 1;
            // body->_needsBackoff = 1;
             if (body->touch.function)
             {

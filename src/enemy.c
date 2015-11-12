@@ -86,7 +86,7 @@ Entity *newSwordsmen(Vec3D position,const char *name)
     }
     ent->objModel = obj_load("models/cube.obj");
     ent->texture = LoadSprite("models/cube_text.png",1024,1024);
-	
+	ent->color.y=.5;
 	ent->type=SWORDSMEN;
 	vec3d_cpy(ent->body.position,position);
     cube_set(ent->body.bounds,-1,-1,-1,2,2,2);
@@ -133,8 +133,8 @@ void sword_callback(void *data, void *context)
 					me->body.position.x-=2;
 				}
 			}
-			slog("left mouse input is %i ",leftMouseInput);
-			slog("attackDir is %i ",attackDir);
+		//	slog("left mouse input is %i ",leftMouseInput);
+		//	slog("attackDir is %i ",attackDir);
 		}else if(other->type==BOX){
 			space_remove_body(space,&me->body);
 			entity_free(me);
@@ -162,7 +162,7 @@ Entity *newFlying(Vec3D position,const char *name)
 	vec3d_cpy(ent->scale,vec3d(.5,.5,.5));
 	ent->type=FLYING;
 	vec3d_cpy(ent->body.position,position);
-
+	ent->color.x=.5;
 	vec3d_cpy(ent->aiBounds,vec3d((float)rand()/((float)RAND_MAX/6)-3,
 		(float)rand()/((float)RAND_MAX/5)+2,
 		(float)rand()/((float)RAND_MAX/3.5)+1.5));
@@ -221,8 +221,8 @@ void flyingCallback(void *data, void *context)
 		
 			space_remove_body(space,&me->body);
 			entity_free(me);
-			slog("left mouse input is %i ",leftMouseInput);
-			slog("attackDir is %i ",attackDir);
+		//	slog("left mouse input is %i ",leftMouseInput);
+		//	slog("attackDir is %i ",attackDir);
 		}
       
     }
