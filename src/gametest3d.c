@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
     newCube(vec3d(3,10,0),"Box");
 	newCrosshair(vec3d(0,0,3),"Cross");
     newSwordsmen(vec3d(3,0,0),"swords");
-
+	newFlying(vec3d(0,7,4),"fly pupa");
   
 
 

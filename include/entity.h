@@ -27,6 +27,7 @@ typedef struct Entity_S
     Body body;
     void (*think)(struct Entity_S *self);
 	int health;
+	Vec3D aiBounds;
 }Entity;
 
 /**
